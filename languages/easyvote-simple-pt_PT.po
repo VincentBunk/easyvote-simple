@@ -1,0 +1,101 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Nextvote Simple\n"
+"POT-Creation-Date: 2015-06-09 22:40+0100\n"
+"PO-Revision-Date: 2015-06-10 17:43-0000\n"
+"Last-Translator: Johannes Bouchain <joschi@stadtkreation.de>\n"
+"Language-Team: Andre Duarte <andrecantoecastroduarte@gmail.com>\n"
+"Language: pt_PT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.1\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c;_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;"
+"esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;"
+"esc_html_x:1,2c\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../nextvote-simple.php:13
+msgid "Simple Voting Plugin for Nextfifteen Theme"
+msgstr "Plugin de voto simples para tema Nextfifteen "
+
+#: ../nextvote-simple.php:55
+msgid "New vote for an idea"
+msgstr "Novo apoio de uma proposta"
+
+#: ../nextvote-simple.php:56
+#, php-format
+msgid "A new vote has been added to an idea at your site %s."
+msgstr "Um novo apoio foi registado numa proposta do site %s."
+
+#: ../nextvote-simple.php:57
+msgid "Username"
+msgstr "Nome de utilizador"
+
+#: ../nextvote-simple.php:58
+msgid "E-mail address"
+msgstr "﻿Endereço de email"
+
+#: ../nextvote-simple.php:59
+msgid "Title of the idea that has been voted"
+msgstr "Título da proposta que foi apoiada"
+
+#: ../nextvote-simple.php:71
+msgid "already"
+msgstr "já"
+
+#: ../nextvote-simple.php:72
+#, php-format
+msgid ""
+"Do you want to vote for this proposal? Then you only have to <a href=\"%s"
+"\">login</a>!"
+msgstr ""
+"Quer apoiar esta proposta? Então só tem de fazer o <a href=\"%s\">login</"
+"a>!"
+
+#: ../nextvote-simple.php:73
+#, php-format
+msgctxt "This idea (already) has X vote(s)"
+msgid "This idea %1$s has %2$s %3$s"
+msgstr "Esta proposta %1$s tem %2$s %3$s"
+
+#: ../nextvote-simple.php:73 ../nextvote-simple.php:113
+msgctxt "output number of votes, singular"
+msgid "vote"
+msgstr "apoio"
+
+#: ../nextvote-simple.php:73 ../nextvote-simple.php:114
+msgctxt "output number of votes, plural"
+msgid "votes"
+msgstr "apoios"
+
+#: ../nextvote-simple.php:74
+#, php-format
+msgid ""
+"If you don't have an account yet, you can <a href=\"%s\">create a user "
+"account here</a>."
+msgstr "Se ainda não tem conta, pode registar-se <a href=\"%s\">aqui</a>."
+
+#: ../nextvote-simple.php:76
+msgid "Please login to vote for this idea"
+msgstr "Por favor registe-se para apoiar esta proposta"
+
+#: ../nextvote-simple.php:78
+msgid "Vote for this idea"
+msgstr "Apoie esta proposta"
+
+#: ../nextvote-simple.php:79
+msgid "You already voted for this idea"
+msgstr "Já apoiou esta proposta"
+
+#: ../nextvote-simple.php:108
+msgid "Most voted ideas"
+msgstr "Proposta com mais apoios"
+
+#: ../nextvote-simple.php:123
+msgid "Most voted"
+msgstr "Mais apoiadas"

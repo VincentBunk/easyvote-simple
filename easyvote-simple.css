@@ -1,0 +1,27 @@
+/* CSS styles for Nextvote Simple Plugin */
+
+#content button.support-button, #content span.support-button, #content a.support-button {
+	display:inline-block;
+	width:auto;
+}
+
+button.support-button:before, span.support-button:before, a.support-button:before {
+	font-family:"FontAwesome";
+	content:"\f164 ";
+	display:inline-block;
+	padding-right:10px;
+}
+
+.support-button.inactive {
+	color:#808080;
+	padding:7px 8px;
+	background:#f0f0f0
+}
+
+span.support-button.inactive {
+	cursor:default;
+}
+
+a.support-button.inactive {
+	text-decoration:none;
+}
