@@ -109,8 +109,8 @@ function easyvote_content_output($content) {
 		
 		if(!is_user_logged_in()) $button='<div class="easyvote-section"><p><a href="'.wp_login_url().'?redirect_to='.get_permalink($post->ID).'" class="support-button inactive">'.__('Please login to vote for this idea','easyvote-simple').'</a> <span class="count-votes-text">'.$count_votes_text.'</span>.</p></div>'; //<p>'.$need_login_text.'<br /><small>'.$need_register_text.'</small></p>';
 		else {
-			if($can_support) $button='<div class="easyvote-section"><form action="" method="post"><p><input type="hidden" name="easyvote-simple-vote" value="1" /><button class="form-control support-button" type="submit">'.__('Vote for this idea','easyvote-simple').'</button> <span class="count-votes-text">'.$count_votes_text.'</span>.</p></form>';
-			else $button='<p><span class="support-button inactive">'.__('You already voted for this idea','easyvote-simple').'</span> <span class="count-votes-text">'.$count_votes_text.'</span>.</p></form></div>';
+			if($can_support) $button='<div class="easyvote-section"><form action="" method="post"><p><input type="hidden" name="easyvote-simple-vote" value="1" /><button class="form-control support-button" type="submit">'.__('Vote for this idea','easyvote-simple').'</button> <span class="count-votes-text">'.$count_votes_text.'</span>.</p></form></div>';
+			else $button='<div class="easyvote-section"><p><span class="support-button inactive">'.__('You already voted for this idea','easyvote-simple').'</span> <span class="count-votes-text">'.$count_votes_text.'</span>.</p></div>';
 		}
 		$content=$button.$content.$button;
 	}
