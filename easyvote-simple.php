@@ -1,14 +1,13 @@
 <?php
-
 /*
 Plugin Name: Easyvote Simple
-Plugin URI: http://www.lxamanha.pt/development/
+Plugin URI: http://www.stadtkreation.de/wordpress.php
 Description: Simple Voting Plugin for Stadtkreation Theme Family
-Version: 0.0.2
-Author: André Duarte e Johannes Bouchain
+Version: 0.3
+Author: André Duarte, Kai Förstermann, Johannes Bouchain
 Text Domain: easyvote-simple
 Domain Path: /languages/
-Author URI: http://www.lxamanha.pt/development/
+Author URI: http://www.stadtkreation.de/wordpress.php
 */
 __('Simple Voting Plugin for Stadtkreation Theme Family','easyvote-simple');
 
@@ -18,6 +17,39 @@ function easyvote_simple_textdomain() {
 	load_plugin_textdomain( 'easyvote-simple', false, $plugin_dir.'/languages/' );
 }
 add_action('plugins_loaded', 'easyvote_simple_textdomain');
+
+// create dashboard submenu
+function easyvote_simple_create_menu() {
+	//create new sub menu
+	add_options_page(__('Easyvote Simple','easyvote-simple'),__('Easyvote Simple','easyvote-simple'), 'manage_options', 'easyvote-simple-preferences', 'easyvote_simple_settings_page');
+	
+	//call register settings function
+	add_action( 'admin_init', 'easyvote_simple_register_settings' );
+}
+add_action('admin_menu', 'easyvote_simple_create_menu');
+
+// create settings page for the plugin
+function easyvote_simple_settings_page() {
+	echo '<div class="wrap">'."\n";
+	echo '<h2>'.__('Preferences for Easyvote Simple plugin','easyvote-simple').'</h2>'."\n";
+	echo '<form method="post" action="options.php">'."\n\t";
+	settings_fields('easyvote-simple-settings-group' );
+	do_settings_sections('easyvote-simple-settings-group');
+	
+	// checkbox: only logged-in users can vote yes/no
+	echo '<p><label for="easyvote-simple-must-register">'.__('User must be logged-in to vote','easyvote-simple').'</label> <input type="checkbox" id="easyvote-simple-must-register"'.(get_option('easyvote-simple-must-register') == 'on' ? ' checked="checked"' : '').' name="easyvote-simple-must-register" /></p>';
+	
+	
+	echo '<p class="submit"><input type="submit" class="button-primary" value="'.__('Save Changes').'" /></p>'."\n";
+	echo '</form>'."\n";
+	echo '</div>'."\n";
+}
+
+add_option('easyvote-simple-must-register');
+// register settings for the plugin
+function easyvote_simple_register_settings() {
+	register_setting('easyvote-simple-settings-group','easyvote-simple-must-register');
+}
 
 // enqueue css stylesheet for the plugin
 function easyvote_simple_scripts() {
@@ -75,10 +107,10 @@ function easyvote_content_output($content) {
 		$count_votes_text = sprintf(_x('This idea %1$s has %2$s %3$s','This idea (already) has X vote(s)','easyvote-simple'),$extra, $sum_votes, ($sum_votes == 1 ? _x('vote','output number of votes, singular','easyvote-simple') : _x('votes','output number of votes, plural','easyvote-simple')));
 		//$need_register_text = sprintf(__('If you don\'t have an account yet, you can <a href="%s">create a user account here</a>.','easyvote-simple'),wp_login_url().'?action=register');
 		
-		if(!is_user_logged_in()) $button='<p><a href="'.wp_login_url().'?redirect_to='.get_permalink($post->ID).'" class="support-button inactive">'.__('Please login to vote for this idea','easyvote-simple').'</a> '.$count_votes_text.'</strong>.</p>'; //<p>'.$need_login_text.'<br /><small>'.$need_register_text.'</small></p>';
+		if(!is_user_logged_in()) $button='<div class="easyvote-section"><p><a href="'.wp_login_url().'?redirect_to='.get_permalink($post->ID).'" class="support-button inactive">'.__('Please login to vote for this idea','easyvote-simple').'</a> <span class="count-votes-text">'.$count_votes_text.'</span>.</p></div>'; //<p>'.$need_login_text.'<br /><small>'.$need_register_text.'</small></p>';
 		else {
-			if($can_support) $button='<form action="" method="post"><p><input type="hidden" name="easyvote-simple-vote" value="1" /><button class="form-control support-button" type="submit">'.__('Vote for this idea','easyvote-simple').'</button> '.$count_votes_text.'</strong>.</p></form>';
-			else $button='<p><span class="support-button inactive">'.__('You already voted for this idea','easyvote-simple').'</span> '.$count_votes_text.'</strong>.</p></form>';
+			if($can_support) $button='<div class="easyvote-section"><form action="" method="post"><p><input type="hidden" name="easyvote-simple-vote" value="1" /><button class="form-control support-button" type="submit">'.__('Vote for this idea','easyvote-simple').'</button> '.$count_votes_text.'</strong>.</p></form>';
+			else $button='<p><span class="support-button inactive">'.__('You already voted for this idea','easyvote-simple').'</span> <span class="count-votes-text">'.$count_votes_text.'</span>.</p></form></div>';
 		}
 		$content=$button.$content.$button;
 	}
